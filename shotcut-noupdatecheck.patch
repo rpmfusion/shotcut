@@ -1,0 +1,48 @@
+Index: src/mainwindow.cpp
+===================================================================
+--- src/mainwindow.cpp.orig     2017-09-27 16:35:35.513234656 +0200
++++ src/mainwindow.cpp  2017-09-27 16:39:58.954253733 +0200
+@@ -1882,9 +1882,9 @@
+     windowHandle()->installEventFilter(this);
+
+     if (!Settings.noUpgrade() && !qApp->property("noupgrade").toBool()) {
+-        QAction* action = new QAction(tr("Click here to check for a new version of Shotcut."), 0);
+-        connect(action, SIGNAL(triggered(bool)), SLOT(on_actionUpgrade_triggered()));
+-        showStatusMessage(action, 10 /* seconds */);
++        //QAction* action = new QAction(tr("Click here to check for a new version of Shotcut."), 0);
++        //connect(action, SIGNAL(triggered(bool)), SLOT(on_actionUpgrade_triggered()));
++        //showStatusMessage(action, 10 /* seconds */);
+     }
+ }
+
+@@ -2890,7 +2890,7 @@
+ void MainWindow::on_actionUpgrade_triggered()
+ {
+     showStatusMessage("Checking for upgrade...");
+-    m_network.get(QNetworkRequest(QUrl("http://check.shotcut.org/version.json")));
++    m_network.get(QNetworkRequest(QUrl("file:///usr/share/shotcut/version.json")));
+ }
+
+ void MainWindow::on_actionOpenXML_triggered()
+@@ -3022,7 +3022,7 @@
+                     m_upgradeUrl = json.object().value("url").toString();
+                 showStatusMessage(action, 10 /* seconds */);
+             } else {
+-                showStatusMessage(tr("You are running the latest version of Shotcut."));
++                showStatusMessage(tr("Use dnf for updates."));
+             }
+             reply->deleteLater();
+             return;
+Index: src/src.pro
+===================================================================
+--- src/src.pro.orig	2017-08-02 07:41:40.000000000 +0200
++++ src/src.pro	2017-08-05 06:23:17.818576703 +0200
+@@ -324,7 +324,7 @@ debug_and_release {
+ LIBS += -lLogger -lmvcp -lpthread
+ 
+ isEmpty(SHOTCUT_VERSION) {
+-    !win32:SHOTCUT_VERSION = $$system(date "+%y.%m.%d")
++    !win32:SHOTCUT_VERSION = $$_VSTRING
+      win32:SHOTCUT_VERSION = adhoc
+ }
+ DEFINES += SHOTCUT_VERSION=\\\"$$SHOTCUT_VERSION\\\"
