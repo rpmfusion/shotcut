@@ -3,7 +3,7 @@
 %define _vstring %(echo %{version} |tr -d ".")
 
 Name:           shotcut
-Version:        17.10
+Version:        17.11
 Release:        1%{dist}
 Summary:        A free, open source, cross-platform video editor
 # The entire source code is GPLv3+ except mvcp/ which is LGPLv2+
@@ -24,7 +24,7 @@ BuildRequires:  desktop-file-utils
 BuildRequires:  doxygen
 BuildRequires:  libappstream-glib
 BuildRequires:  pkgconfig(Qt5Concurrent)
-BuildRequires:  pkgconfig(Qt5Core) >= 5.9.2
+BuildRequires:  pkgconfig(Qt5Core) >= 5.9.1
 BuildRequires:  pkgconfig(Qt5Gui)
 BuildRequires:  pkgconfig(Qt5Multimedia)
 BuildRequires:  pkgconfig(Qt5Network)
@@ -114,8 +114,8 @@ Supplements:    (%{name} = %{version}-%{release} and langpacks-%{1})\
 
 # Create version.json from current version
 echo "{" > version.json
-echo " \"version_number\": %{_vstring}02," >> version.json
-echo " \"version_string\": \"%{version}.02\"," >> version.json
+echo " \"version_number\": %{_vstring}04," >> version.json
+echo " \"version_string\": \"%{version}.04\"," >> version.json
 echo " \"url\": \"https://shotcut.org/blog/new-release-%{_vstring}/\"" >> version.json
 echo "}" >> version.json
 echo "" >> version.json
@@ -124,8 +124,8 @@ echo "" >> version.json
 rm -rf drmingw
 
 %build
-export _VSTRING="%{version}.02"
-%{qmake_qt5} _VSTRING="%{version}.02" \
+export _VSTRING="%{version}.04"
+%{qmake_qt5} _VSTRING="%{version}.04" \
              PREFIX=%{buildroot}%{_prefix}
 %make_build
 
@@ -137,7 +137,7 @@ doxygen CuteLogger/Doxyfile
 %install
 %make_install
 install -D icons/%{name}-logo-64.png %{buildroot}/%{_datadir}/pixmaps/%{name}.png
-install -Dm644 %{S:1} %{buildroot}/%{_datadir}/appdata/%{name}.appdata.xml
+install -Dm644 %{name}.appdata.xml %{buildroot}/%{_datadir}/appdata/%{name}.appdata.xml
 install -Dm644 snap/gui/%{name}.desktop %{buildroot}%{_datadir}/applications/%{name}.desktop
 chmod a+x %{buildroot}/%{_datadir}/shotcut/qml/export-edl/rebuild.sh
 
@@ -191,6 +191,9 @@ appstream-util validate-relax --nonet %{buildroot}/%{_datadir}/appdata/%{name}.a
 %doc doc
 
 %changelog
+* Sat Nov 04 2017 Martin Gansser <martinkg@fedoraproject.org> - 17.11-1
+- Update to 17.11
+
 * Sat Oct 14 2017 Martin Gansser <martinkg@fedoraproject.org> - 17.10-1
 - Update to 17.10
 - pkgconfig(Qt5Core) >= 5.9.2 is required
