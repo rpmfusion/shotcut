@@ -1,13 +1,20 @@
 Index: src/mainwindow.cpp
 ===================================================================
+<<<<<<< HEAD
 --- src/mainwindow.cpp.orig	2017-11-04 16:11:25.163538614 +0100
 +++ src/mainwindow.cpp	2017-11-04 16:17:17.798846928 +0100
 @@ -2547,9 +2547,9 @@
+=======
+--- src/mainwindow.cpp.orig	2017-12-08 13:38:56.944162254 +0100
++++ src/mainwindow.cpp	2017-12-08 13:42:07.385176045 +0100
+@@ -2548,9 +2548,9 @@
+>>>>>>> master
  
  void MainWindow::showUpgradePrompt()
  {
 -    QAction* action = new QAction(tr("Click here to check for a new version of Shotcut."), 0);
 -    connect(action, SIGNAL(triggered(bool)), SLOT(on_actionUpgrade_triggered()));
+<<<<<<< HEAD
 -    showStatusMessage(action, 30 /* seconds */);
 +    //QAction* action = new QAction(tr("Click here to check for a new version of Shotcut."), 0);
 +    //connect(action, SIGNAL(triggered(bool)), SLOT(on_actionUpgrade_triggered()));
@@ -16,15 +23,28 @@ Index: src/mainwindow.cpp
  
  void MainWindow::on_actionRealtime_triggered(bool checked)
 @@ -2908,7 +2908,7 @@
+=======
+-    showStatusMessage(action, 15 /* seconds */);
++    //QAction* action = new QAction(tr("Click here to check for a new version of Shotcut."), 0);
++    //connect(action, SIGNAL(triggered(bool)), SLOT(on_actionUpgrade_triggered()));
++    //showStatusMessage(action, 15 /* seconds */);
+ }
+ 
+ void MainWindow::on_actionRealtime_triggered(bool checked)
+@@ -2909,7 +2909,6 @@
+>>>>>>> master
  void MainWindow::on_actionUpgrade_triggered()
  {
      showStatusMessage("Checking for upgrade...");
 -    m_network.get(QNetworkRequest(QUrl("http://check.shotcut.org/version.json")));
-+    m_network.get(QNetworkRequest(QUrl("file:///usr/share/shotcut/version.json")));
  }
  
  void MainWindow::on_actionOpenXML_triggered()
+<<<<<<< HEAD
 @@ -3040,7 +3040,8 @@
+=======
+@@ -3041,7 +3040,7 @@
+>>>>>>> master
                      m_upgradeUrl = json.object().value("url").toString();
                  showStatusMessage(action, 10 /* seconds */);
              } else {
@@ -36,9 +56,15 @@ Index: src/mainwindow.cpp
              return;
 Index: src/src.pro
 ===================================================================
+<<<<<<< HEAD
 --- src/src.pro.orig	2017-11-04 16:22:22.359946204 +0100
 +++ src/src.pro	2017-11-04 16:25:41.796318201 +0100
 @@ -326,7 +326,7 @@
+=======
+--- src/src.pro.orig	2017-12-08 13:42:45.581178811 +0100
++++ src/src.pro	2017-12-08 13:44:10.984184995 +0100
+@@ -329,7 +329,7 @@
+>>>>>>> master
  LIBS += -lCuteLogger -lmvcp -lpthread
  
  isEmpty(SHOTCUT_VERSION) {
