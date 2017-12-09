@@ -4,7 +4,7 @@
 
 Name:           shotcut
 Version:        17.12
-Release:        1%{dist}
+Release:        2%{dist}
 Summary:        A free, open source, cross-platform video editor
 # The entire source code is GPLv3+ except mvcp/ which is LGPLv2+
 License:        GPLv3+ and LGPLv2+
@@ -191,6 +191,9 @@ appstream-util validate-relax --nonet %{buildroot}/%{_datadir}/appdata/%{name}.a
 %doc doc
 
 %changelog
+* Sat Dec 09 2017 Martin Gansser <martinkg@fedoraproject.org> - 17.12-2
+- Rebuild
+
 * Fri Dec 08 2017 Martin Gansser <martinkg@fedoraproject.org> - 17.12-1
 - Update to 17.12
 
