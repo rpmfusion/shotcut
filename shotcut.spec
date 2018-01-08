@@ -3,8 +3,8 @@
 %define _vstring %(echo %{version} |tr -d ".")
 
 Name:           shotcut
-Version:        17.12
-Release:        2%{dist}
+Version:        18.01
+Release:        1%{dist}
 Summary:        A free, open source, cross-platform video editor
 # The entire source code is GPLv3+ except mvcp/ which is LGPLv2+
 License:        GPLv3+ and LGPLv2+
@@ -114,8 +114,8 @@ Supplements:    (%{name} = %{version}-%{release} and langpacks-%{1})\
 
 # Create version.json from current version
 echo "{" > version.json
-echo " \"version_number\": %{_vstring}04," >> version.json
-echo " \"version_string\": \"%{version}.04\"," >> version.json
+echo " \"version_number\": %{_vstring}02," >> version.json
+echo " \"version_string\": \"%{version}.02\"," >> version.json
 echo " \"url\": \"https://shotcut.org/blog/new-release-%{_vstring}/\"" >> version.json
 echo "}" >> version.json
 echo "" >> version.json
@@ -124,8 +124,8 @@ echo "" >> version.json
 rm -rf drmingw
 
 %build
-export _VSTRING="%{version}.04"
-%{qmake_qt5} _VSTRING="%{version}.04" \
+export _VSTRING="%{version}.02"
+%{qmake_qt5} _VSTRING="%{version}.02" \
              PREFIX=%{buildroot}%{_prefix}
 %make_build
 
@@ -191,6 +191,9 @@ appstream-util validate-relax --nonet %{buildroot}/%{_datadir}/appdata/%{name}.a
 %doc doc
 
 %changelog
+* Mon Jan 08 2018 Martin Gansser <martinkg@fedoraproject.org> - 18.01-1
+- Update to 18.01
+
 * Sat Dec 09 2017 Martin Gansser <martinkg@fedoraproject.org> - 17.12-2
 - Rebuild
 
