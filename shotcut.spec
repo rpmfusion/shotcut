@@ -3,7 +3,7 @@
 %define _vstring %(echo %{version} |tr -d ".")
 
 Name:           shotcut
-Version:        18.03.06
+Version:        18.05.08
 Release:        1%{dist}
 Summary:        A free, open source, cross-platform video editor
 # The entire source code is GPLv3+ except mvcp/ which is LGPLv2+
@@ -191,6 +191,9 @@ appstream-util validate-relax --nonet %{buildroot}/%{_datadir}/appdata/%{name}.a
 %doc doc
 
 %changelog
+* Sat May 12 2018 Martin Gansser <martinkg@fedoraproject.org> - 18.05.08-1
+- Update to 18.05.08
+
 * Fri Apr 27 2018 Martin Gansser <martinkg@fedoraproject.org> - 18.03.06-1
 - Update to 18.03.06
 
