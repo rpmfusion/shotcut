@@ -1,9 +1,9 @@
 # This package creates a build time version from the current date and uses it to check
-# for updates. See patch2 and prep/build section.
+# for updates. See patch1 and prep/build section.
 %define _vstring %(echo %{version} |tr -d ".")
 
 Name:           shotcut
-Version:        18.05.08
+Version:        18.06.02
 Release:        1%{dist}
 Summary:        A free, open source, cross-platform video editor
 # The entire source code is GPLv3+ except mvcp/ which is LGPLv2+
@@ -14,10 +14,8 @@ Source0:        https://github.com/mltframework/shotcut/archive/v%{version}.tar.
 Source1:        %{name}.appdata.xml
 # Melt patch /usr/bin/mlt-melt
 Patch0:         mlt_path.patch
-# shotcut-desktopfile.patch -- Fix icon path
-Patch1:         shotcut-desktopfile.patch
 # shotcut-noupdatecheck.patch -- Disable automatic update check
-Patch2:         shotcut-noupdatecheck.patch
+Patch1:         shotcut-noupdatecheck.patch
 
 BuildRequires:  gcc-c++
 BuildRequires:  desktop-file-utils
@@ -136,9 +134,6 @@ doxygen CuteLogger/Doxyfile
 
 %install
 %make_install
-install -D icons/%{name}-logo-64.png %{buildroot}/%{_datadir}/pixmaps/%{name}.png
-install -Dm644 %{name}.appdata.xml %{buildroot}/%{_datadir}/appdata/%{name}.appdata.xml
-install -Dm644 snap/gui/%{name}.desktop %{buildroot}%{_datadir}/applications/%{name}.desktop
 chmod a+x %{buildroot}/%{_datadir}/shotcut/qml/export-edl/rebuild.sh
 
 # Install language files
@@ -173,8 +168,8 @@ sed -i 's/\r$//' src/mvcp/{qconsole.h,qconsole.cpp}
 chmod a-x src/mvcp/{qconsole.cpp,qconsole.h}
 
 %check
-desktop-file-validate %{buildroot}%{_datadir}/applications/%{name}.desktop
-appstream-util validate-relax --nonet %{buildroot}/%{_datadir}/appdata/%{name}.appdata.xml
+desktop-file-validate %{buildroot}%{_datadir}/applications/org.%{name}.Shotcut.desktop
+appstream-util validate-relax --nonet %{buildroot}/%{_datadir}/metainfo/org.%{name}.Shotcut.appdata.xml
 
 %files
 %doc README.md
@@ -182,15 +177,19 @@ appstream-util validate-relax --nonet %{buildroot}/%{_datadir}/appdata/%{name}.a
 %{_bindir}/%{name}
 %{_datadir}/%{name}/
 %exclude %{_datadir}/%{name}/translations
-%{_datadir}/pixmaps/%{name}.png
-%{_datadir}/applications/%{name}.desktop
-%{_datadir}/appdata/%{name}.appdata.xml
+%{_datadir}/applications/org.%{name}.Shotcut.desktop
+%{_datadir}/icons/hicolor/64x64/apps/org.%{name}.Shotcut.png
+%{_datadir}/metainfo/org.%{name}.Shotcut.appdata.xml
+%{_datadir}/mime/packages/org.%{name}.Shotcut.xml
 
 %files doc
 %license COPYING
 %doc doc
 
 %changelog
+* Tue Jun 05 2018 Martin Gansser <martinkg@fedoraproject.org> - 18.06.02-1
+- Update to 18.06.02
+
 * Sat May 12 2018 Martin Gansser <martinkg@fedoraproject.org> - 18.05.08-1
 - Update to 18.05.08
 
