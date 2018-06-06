@@ -16,6 +16,7 @@ Source1:        %{name}.appdata.xml
 Patch0:         mlt_path.patch
 # shotcut-noupdatecheck.patch -- Disable automatic update check
 Patch1:         shotcut-noupdatecheck.patch
+Patch2:         shotcut-%{version}-qt.patch
 
 BuildRequires:  gcc-c++
 BuildRequires:  desktop-file-utils
@@ -189,6 +190,7 @@ appstream-util validate-relax --nonet %{buildroot}/%{_datadir}/metainfo/org.%{na
 %changelog
 * Tue Jun 05 2018 Martin Gansser <martinkg@fedoraproject.org> - 18.06.02-1
 - Update to 18.06.02
+- Add shotcut-18.06.02-qt.patch for qt 5.11.0
 
 * Sat May 12 2018 Martin Gansser <martinkg@fedoraproject.org> - 18.05.08-1
 - Update to 18.05.08

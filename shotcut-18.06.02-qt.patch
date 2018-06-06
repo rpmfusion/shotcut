@@ -1,0 +1,20 @@
+--- src/docks/recentdock.cpp.orig	2018-06-06 10:44:58.408978835 +0200
++++ src/docks/recentdock.cpp	2018-06-06 10:45:26.838845183 +0200
+@@ -21,6 +21,7 @@
+ #include "ui_recentdock.h"
+ #include "util.h"
+ 
++#include <QAction>
+ #include <QDir>
+ #include <QKeyEvent>
+ #include <Logger.h>
+--- src/docks/timelinedock.cpp.orig	2018-06-06 11:16:54.831969562 +0200
++++ src/docks/timelinedock.cpp	2018-06-06 11:17:24.417830475 +0200
+@@ -28,6 +28,7 @@
+ #include "shotcut_mlt_properties.h"
+ #include "settings.h"
+ 
++#include <QAction>
+ #include <QtQml>
+ #include <QtQuick>
+ #include <Logger.h>
