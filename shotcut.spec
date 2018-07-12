@@ -3,7 +3,7 @@
 %define _vstring %(echo %{version} |tr -d ".")
 
 Name:           shotcut
-Version:        18.06.02
+Version:        18.07
 Release:        1%{dist}
 Summary:        A free, open source, cross-platform video editor
 # The entire source code is GPLv3+ except mvcp/ which is LGPLv2+
@@ -16,7 +16,6 @@ Source1:        %{name}.appdata.xml
 Patch0:         mlt_path.patch
 # shotcut-noupdatecheck.patch -- Disable automatic update check
 Patch1:         shotcut-noupdatecheck.patch
-Patch2:         shotcut-%{version}-qt.patch
 
 BuildRequires:  gcc-c++
 BuildRequires:  desktop-file-utils
@@ -35,8 +34,8 @@ BuildRequires:  pkgconfig(Qt5WebSockets)
 BuildRequires:  pkgconfig(Qt5X11Extras)
 BuildRequires:  pkgconfig(Qt5Xml)
 BuildRequires:  qt5-linguist
-BuildRequires:  pkgconfig(mlt++)
-BuildRequires:  pkgconfig(mlt-framework)
+BuildRequires:  pkgconfig(mlt++) >= 6.10.0
+BuildRequires:  pkgconfig(mlt-framework) >= 6.10.0 
 BuildRequires:  x264-devel
 BuildRequires:  webvfx-devel
 
@@ -47,7 +46,7 @@ Requires:       qt5-qtmultimedia
 Requires:       gstreamer1-plugins-bad-free-extras
 Requires:       frei0r-plugins
 Requires:       ladspa
-Requires:       mlt-freeworld
+Requires:       mlt-freeworld >= 6.10.0
 Requires:       lame
 Requires:       ffmpeg
 
@@ -188,9 +187,11 @@ appstream-util validate-relax --nonet %{buildroot}/%{_datadir}/metainfo/org.%{na
 %doc doc
 
 %changelog
+* Tue Jul 03 2018 Martin Gansser <martinkg@fedoraproject.org> - 18.07-1
+- Update to 18.07
+
 * Tue Jun 05 2018 Martin Gansser <martinkg@fedoraproject.org> - 18.06.02-1
 - Update to 18.06.02
-- Add shotcut-18.06.02-qt.patch for qt 5.11.0
 
 * Sat May 12 2018 Martin Gansser <martinkg@fedoraproject.org> - 18.05.08-1
 - Update to 18.05.08
