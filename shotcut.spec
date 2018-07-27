@@ -4,7 +4,7 @@
 
 Name:           shotcut
 Version:        18.07
-Release:        1%{dist}
+Release:        2%{dist}
 Summary:        A free, open source, cross-platform video editor
 # The entire source code is GPLv3+ except mvcp/ which is LGPLv2+
 License:        GPLv3+ and LGPLv2+
@@ -187,6 +187,9 @@ appstream-util validate-relax --nonet %{buildroot}/%{_datadir}/metainfo/org.%{na
 %doc doc
 
 %changelog
+* Fri Jul 27 2018 RPM Fusion Release Engineering <leigh123linux@gmail.com> - 18.07-2
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_29_Mass_Rebuild
+
 * Tue Jul 03 2018 Martin Gansser <martinkg@fedoraproject.org> - 18.07-1
 - Update to 18.07
 
