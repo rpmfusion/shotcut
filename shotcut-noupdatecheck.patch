@@ -1,8 +1,8 @@
 Index: src/mainwindow.cpp
 ===================================================================
---- src/mainwindow.cpp.orig	2017-12-08 13:38:56.944162254 +0100
-+++ src/mainwindow.cpp	2017-12-08 13:42:07.385176045 +0100
-@@ -2548,9 +2548,9 @@
+--- src/mainwindow.cpp.orig	2018-08-07 12:45:29.676332067 +0200
++++ src/mainwindow.cpp	2018-08-07 12:49:38.808610634 +0200
+@@ -2650,9 +2650,9 @@
  
  void MainWindow::showUpgradePrompt()
  {
@@ -15,15 +15,7 @@ Index: src/mainwindow.cpp
  }
  
  void MainWindow::on_actionRealtime_triggered(bool checked)
-@@ -2909,7 +2909,6 @@
- void MainWindow::on_actionUpgrade_triggered()
- {
-     showStatusMessage("Checking for upgrade...");
--    m_network.get(QNetworkRequest(QUrl("http://check.shotcut.org/version.json")));
- }
- 
- void MainWindow::on_actionOpenXML_triggered()
-@@ -3041,7 +3040,7 @@
+@@ -3204,7 +3204,7 @@
                      m_upgradeUrl = json.object().value("url").toString();
                  showStatusMessage(action, 10 /* seconds */);
              } else {
@@ -34,10 +26,10 @@ Index: src/mainwindow.cpp
              return;
 Index: src/src.pro
 ===================================================================
---- src/src.pro.orig	2017-12-08 13:42:45.581178811 +0100
-+++ src/src.pro	2017-12-08 13:44:10.984184995 +0100
-@@ -329,7 +329,7 @@
- LIBS += -lCuteLogger -lmvcp -lpthread
+--- src/src.pro.orig	2018-08-07 12:50:08.762042822 +0200
++++ src/src.pro	2018-08-07 12:52:31.858330244 +0200
+@@ -294,7 +294,7 @@
+ LIBS += -lCuteLogger
  
  isEmpty(SHOTCUT_VERSION) {
 -    !win32:SHOTCUT_VERSION = $$system(date "+%y.%m.%d")

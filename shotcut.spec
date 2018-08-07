@@ -3,8 +3,8 @@
 %define _vstring %(echo %{version} |tr -d ".")
 
 Name:           shotcut
-Version:        18.07
-Release:        2%{dist}
+Version:        18.08
+Release:        1%{dist}
 Summary:        A free, open source, cross-platform video editor
 # The entire source code is GPLv3+ except mvcp/ which is LGPLv2+
 License:        GPLv3+ and LGPLv2+
@@ -161,12 +161,6 @@ cp -v version.json %{buildroot}%{_datadir}/%{name}
 chmod a-x %{buildroot}%{_datadir}/%{name}/qml/filters/webvfx_ruttetraizer/ruttetraizer.html
 chmod a-x %{buildroot}%{_datadir}/%{name}/qml/filters/webvfx_ruttetraizer/three.js
 
-# fixes E: wrong-script-end-of-line-encoding
-sed -i 's/\r$//' src/mvcp/{qconsole.h,qconsole.cpp}
-
-# fixes W: spurious-executable-perm
-chmod a-x src/mvcp/{qconsole.cpp,qconsole.h}
-
 %check
 desktop-file-validate %{buildroot}%{_datadir}/applications/org.%{name}.Shotcut.desktop
 appstream-util validate-relax --nonet %{buildroot}/%{_datadir}/metainfo/org.%{name}.Shotcut.appdata.xml
@@ -187,6 +181,9 @@ appstream-util validate-relax --nonet %{buildroot}/%{_datadir}/metainfo/org.%{na
 %doc doc
 
 %changelog
+* Tue Aug 07 2018 Martin Gansser <martinkg@fedoraproject.org> - 18.08-1
+- Update to 18.08
+
 * Fri Jul 27 2018 RPM Fusion Release Engineering <leigh123linux@gmail.com> - 18.07-2
 - Rebuilt for https://fedoraproject.org/wiki/Fedora_29_Mass_Rebuild
 
