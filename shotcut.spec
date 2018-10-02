@@ -3,8 +3,8 @@
 %define _vstring %(echo %{version} |tr -d ".")
 
 Name:           shotcut
-Version:        18.09.16
-Release:        1%{dist}
+Version:        18.10.01
+Release:        0.1.beta1%{dist}
 Summary:        A free, open source, cross-platform video editor
 # The entire source code is GPLv3+ except mvcp/ which is LGPLv2+
 License:        GPLv3+ and LGPLv2+
@@ -13,7 +13,7 @@ Source0:        https://github.com/mltframework/shotcut/archive/v%{version}.tar.
 # https://forum.shotcut.org/t/appdata-xml-file-for-gnome-software-center/2742
 Source1:        %{name}.appdata.xml
 # Melt patch /usr/bin/mlt-melt
-Patch0:         mlt_path.patch
+####Patch0:         mlt_path.patch
 # shotcut-noupdatecheck.patch -- Disable automatic update check
 Patch1:         shotcut-noupdatecheck.patch
 
@@ -181,6 +181,9 @@ appstream-util validate-relax --nonet %{buildroot}/%{_datadir}/metainfo/org.%{na
 %doc doc
 
 %changelog
+* Tue Oct 02 2018 Martin Gansser <martinkg@fedoraproject.org> - 18.10.01-1
+- Update to 18.10.01
+
 * Tue Oct 02 2018 Martin Gansser <martinkg@fedoraproject.org> - 18.09.16-1
 - Update to 18.09.16
 

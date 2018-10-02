@@ -1,34 +1,30 @@
-Index: src/mainwindow.cpp
-===================================================================
---- src/mainwindow.cpp.orig	2018-08-07 12:45:29.676332067 +0200
-+++ src/mainwindow.cpp	2018-08-07 12:49:38.808610634 +0200
-@@ -2650,9 +2650,9 @@
- 
- void MainWindow::showUpgradePrompt()
- {
--    QAction* action = new QAction(tr("Click here to check for a new version of Shotcut."), 0);
--    connect(action, SIGNAL(triggered(bool)), SLOT(on_actionUpgrade_triggered()));
--    showStatusMessage(action, 15 /* seconds */);
-+    //QAction* action = new QAction(tr("Click here to check for a new version of Shotcut."), 0);
-+    //connect(action, SIGNAL(triggered(bool)), SLOT(on_actionUpgrade_triggered()));
-+    //showStatusMessage(action, 15 /* seconds */);
+--- src/mainwindow.cpp.orig	2018-10-02 13:48:27.170388091 +0200
++++ src/mainwindow.cpp	2018-10-02 13:49:59.172328038 +0200
+@@ -2790,9 +2790,9 @@
+         showStatusMessage("Checking for upgrade...");
+         m_network.get(QNetworkRequest(QUrl("http://check.shotcut.org/version.json")));
+     } else {
+-        QAction* action = new QAction(tr("Click here to check for a new version of Shotcut."), 0);
+-        connect(action, SIGNAL(triggered(bool)), SLOT(on_actionUpgrade_triggered()));
+-        showStatusMessage(action, 15 /* seconds */);
++        //QAction* action = new QAction(tr("Click here to check for a new version of Shotcut."), 0);
++        //connect(action, SIGNAL(triggered(bool)), SLOT(on_actionUpgrade_triggered()));
++        //showStatusMessage(action, 15 /* seconds */);
+     }
  }
  
- void MainWindow::on_actionRealtime_triggered(bool checked)
-@@ -3204,7 +3204,7 @@
+@@ -3375,7 +3375,7 @@
                      m_upgradeUrl = json.object().value("url").toString();
-                 showStatusMessage(action, 10 /* seconds */);
+                 showStatusMessage(action, 15 /* seconds */);
              } else {
 -                showStatusMessage(tr("You are running the latest version of Shotcut."));
-+                showStatusMessage(tr("Use dnf for updates."));
++		 showStatusMessage(tr("Use dnf for updates."));
              }
              reply->deleteLater();
              return;
-Index: src/src.pro
-===================================================================
---- src/src.pro.orig	2018-08-07 12:50:08.762042822 +0200
-+++ src/src.pro	2018-08-07 12:52:31.858330244 +0200
-@@ -294,7 +294,7 @@
+--- src/src.pro.orig	2018-10-02 13:52:58.638721580 +0200
++++ src/src.pro	2018-10-02 13:53:27.064761829 +0200
+@@ -300,7 +300,7 @@
  LIBS += -lCuteLogger
  
  isEmpty(SHOTCUT_VERSION) {
