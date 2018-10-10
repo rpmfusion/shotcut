@@ -3,8 +3,8 @@
 %define _vstring %(echo %{version} |tr -d ".")
 
 Name:           shotcut
-Version:        18.10.01
-Release:        0.1.beta1%{dist}
+Version:        18.10.08
+Release:        1%{dist}
 Summary:        A free, open source, cross-platform video editor
 # The entire source code is GPLv3+ except mvcp/ which is LGPLv2+
 License:        GPLv3+ and LGPLv2+
@@ -12,8 +12,6 @@ URL:            http://www.shotcut.org/
 Source0:        https://github.com/mltframework/shotcut/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
 # https://forum.shotcut.org/t/appdata-xml-file-for-gnome-software-center/2742
 Source1:        %{name}.appdata.xml
-# Melt patch /usr/bin/mlt-melt
-####Patch0:         mlt_path.patch
 # shotcut-noupdatecheck.patch -- Disable automatic update check
 Patch1:         shotcut-noupdatecheck.patch
 
@@ -163,7 +161,7 @@ chmod a-x %{buildroot}%{_datadir}/%{name}/qml/filters/webvfx_ruttetraizer/three.
 
 %check
 desktop-file-validate %{buildroot}%{_datadir}/applications/org.%{name}.Shotcut.desktop
-appstream-util validate-relax --nonet %{buildroot}/%{_datadir}/metainfo/org.%{name}.Shotcut.appdata.xml
+appstream-util validate-relax --nonet %{buildroot}/%{_metainfodir}/org.%{name}.Shotcut.appdata.xml
 
 %files
 %doc README.md
@@ -173,7 +171,7 @@ appstream-util validate-relax --nonet %{buildroot}/%{_datadir}/metainfo/org.%{na
 %exclude %{_datadir}/%{name}/translations
 %{_datadir}/applications/org.%{name}.Shotcut.desktop
 %{_datadir}/icons/hicolor/64x64/apps/org.%{name}.Shotcut.png
-%{_datadir}/metainfo/org.%{name}.Shotcut.appdata.xml
+%{_metainfodir}/org.%{name}.Shotcut.appdata.xml
 %{_datadir}/mime/packages/org.%{name}.Shotcut.xml
 
 %files doc
@@ -181,8 +179,12 @@ appstream-util validate-relax --nonet %{buildroot}/%{_datadir}/metainfo/org.%{na
 %doc doc
 
 %changelog
-* Tue Oct 02 2018 Martin Gansser <martinkg@fedoraproject.org> - 18.10.01-1
-- Update to 18.10.01
+* Wed Oct 10 2018 Martin Gansser <martinkg@fedoraproject.org> - 18.10.08-1
+- Update to 18.10.08
+- Dropped mlt_path.patch
+
+* Tue Oct 02 2018 Martin Gansser <martinkg@fedoraproject.org> - 18.10.01-0.1.beta1
+- Update to 18.10.01-0.1.beta1
 
 * Tue Oct 02 2018 Martin Gansser <martinkg@fedoraproject.org> - 18.09.16-1
 - Update to 18.09.16
