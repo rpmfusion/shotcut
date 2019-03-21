@@ -3,8 +3,8 @@
 %define _vstring %(echo %{version} |tr -d ".")
 
 Name:           shotcut
-Version:        19.01.27
-Release:        2%{dist}
+Version:        19.02.28
+Release:        1%{dist}
 Summary:        A free, open source, cross-platform video editor
 # The entire source code is GPLv3+ except mvcp/ which is LGPLv2+
 License:        GPLv3+ and LGPLv2+
@@ -87,13 +87,17 @@ Supplements:    (%{name} = %{version}-%{release} and langpacks-%{1})\
 %lang_subpkg de German
 %lang_subpkg el Greek
 %lang_subpkg en English
+%lang_subpkg en_GB "(Great Britain)"
 %lang_subpkg es Spanish
+%lang_subpkg et Estonian
+%lang_subpkg fi Finnish
 %lang_subpkg fr French
 %lang_subpkg gd "(Scottish Gaelic)"
 %lang_subpkg hu Hungarian
 %lang_subpkg it Italian
 %lang_subpkg ja Japanese
 %lang_subpkg nb Norwegian
+%lang_subpkg ne Nepali
 %lang_subpkg nl Dutch
 %lang_subpkg oc Occitan
 %lang_subpkg pl Polish
@@ -183,6 +187,9 @@ appstream-util validate-relax --nonet %{buildroot}/%{_metainfodir}/org.%{name}.S
 %doc doc
 
 %changelog
+* Thu Mar 21 2019 Martin Gansser <martinkg@fedoraproject.org> - 19.02.28-1
+- Update to 19.02.28
+
 * Mon Mar 04 2019 RPM Fusion Release Engineering <leigh123linux@gmail.com> - 19.01.27-2
 - Rebuilt for https://fedoraproject.org/wiki/Fedora_30_Mass_Rebuild
 
