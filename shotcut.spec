@@ -3,8 +3,9 @@
 %define _vstring %(echo %{version} |tr -d ".")
 
 Name:           shotcut
-Version:        19.02.28
+Version:        19.06.04
 Release:        1%{dist}
+#Release:        0.1.beta1%%{dist}
 Summary:        A free, open source, cross-platform video editor
 # The entire source code is GPLv3+ except mvcp/ which is LGPLv2+
 License:        GPLv3+ and LGPLv2+
@@ -34,8 +35,8 @@ BuildRequires:  pkgconfig(Qt5WebSockets)
 BuildRequires:  pkgconfig(Qt5X11Extras)
 BuildRequires:  pkgconfig(Qt5Xml)
 BuildRequires:  qt5-linguist
-BuildRequires:  pkgconfig(mlt++) >= 6.10.0
-BuildRequires:  pkgconfig(mlt-framework) >= 6.10.0 
+BuildRequires:  pkgconfig(mlt++) >= 6.16.0
+BuildRequires:  pkgconfig(mlt-framework) >= 6.16.0 
 BuildRequires:  x264-devel
 BuildRequires:  webvfx-devel
 
@@ -187,6 +188,9 @@ appstream-util validate-relax --nonet %{buildroot}/%{_metainfodir}/org.%{name}.S
 %doc doc
 
 %changelog
+* Tue Jun 04 2019 Martin Gansser <martinkg@fedoraproject.org> - 19.06.04-1
+- Update to 19.06.04
+
 * Thu Mar 21 2019 Martin Gansser <martinkg@fedoraproject.org> - 19.02.28-1
 - Update to 19.02.28
 
