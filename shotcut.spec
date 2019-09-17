@@ -3,7 +3,7 @@
 %define _vstring %(echo %{version} |tr -d ".")
 
 Name:           shotcut
-Version:        19.08.16
+Version:        19.09.14
 Release:        1%{dist}
 #Release:        0.1.beta1%%{dist}
 Summary:        A free, open source, cross-platform video editor
@@ -188,6 +188,9 @@ appstream-util validate-relax --nonet %{buildroot}/%{_metainfodir}/org.%{name}.S
 %doc doc
 
 %changelog
+* Tue Sep 17 2019 Martin Gansser <martinkg@fedoraproject.org> - 19.09.14-1
+- Update to 19.09.14
+
 * Mon Aug 19 2019 Martin Gansser <martinkg@fedoraproject.org> - 19.08.16-1
 - Update to 19.08.16
 
