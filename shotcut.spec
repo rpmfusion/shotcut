@@ -4,7 +4,7 @@
 
 Name:           shotcut
 Version:        19.09.14
-Release:        1%{dist}
+Release:        2%{dist}
 #Release:        0.1.beta1%%{dist}
 Summary:        A free, open source, cross-platform video editor
 # The entire source code is GPLv3+ except mvcp/ which is LGPLv2+
@@ -97,9 +97,11 @@ Supplements:    (%{name} = %{version}-%{release} and langpacks-%{1})\
 %lang_subpkg hu Hungarian
 %lang_subpkg it Italian
 %lang_subpkg ja Japanese
+%lang_subpkg ko Korean
 %lang_subpkg nb Norwegian
 %lang_subpkg ne Nepali
 %lang_subpkg nl Dutch
+%lang_subpkg nn Norwegian
 %lang_subpkg oc Occitan
 %lang_subpkg pl Polish
 %lang_subpkg pt_BR "Portuguese (Brazil)"
@@ -107,6 +109,7 @@ Supplements:    (%{name} = %{version}-%{release} and langpacks-%{1})\
 %lang_subpkg ru Russian
 %lang_subpkg sk Slovakian
 %lang_subpkg sl Slovenian
+%lang_subpkg sv Swedish
 %lang_subpkg tr Turkish
 %lang_subpkg uk Ukrainian
 %lang_subpkg zh_CN "Chinese (S)"
@@ -188,6 +191,9 @@ appstream-util validate-relax --nonet %{buildroot}/%{_metainfodir}/org.%{name}.S
 %doc doc
 
 %changelog
+* Tue Sep 17 2019 Martin Gansser <martinkg@fedoraproject.org> - 19.09.14-2
+- Add missing translations for ko, nn and sv
+
 * Tue Sep 17 2019 Martin Gansser <martinkg@fedoraproject.org> - 19.09.14-1
 - Update to 19.09.14
 
