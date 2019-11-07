@@ -3,8 +3,8 @@
 %define _vstring %(echo %{version} |tr -d ".")
 
 Name:           shotcut
-Version:        19.09.14
-Release:        2%{dist}
+Version:        19.10.20
+Release:        1%{dist}
 #Release:        0.1.beta1%%{dist}
 Summary:        A free, open source, cross-platform video editor
 # The entire source code is GPLv3+ except mvcp/ which is LGPLv2+
@@ -87,13 +87,14 @@ Supplements:    (%{name} = %{version}-%{release} and langpacks-%{1})\
 %lang_subpkg da Danish
 %lang_subpkg de German
 %lang_subpkg el Greek
-%lang_subpkg en English
 %lang_subpkg en_GB "(Great Britain)"
+%lang_subpkg en English
 %lang_subpkg es Spanish
 %lang_subpkg et Estonian
 %lang_subpkg fi Finnish
 %lang_subpkg fr French
 %lang_subpkg gd "(Scottish Gaelic)"
+%lang_subpkg gl Galician
 %lang_subpkg hu Hungarian
 %lang_subpkg it Italian
 %lang_subpkg ja Japanese
@@ -110,6 +111,7 @@ Supplements:    (%{name} = %{version}-%{release} and langpacks-%{1})\
 %lang_subpkg sk Slovakian
 %lang_subpkg sl Slovenian
 %lang_subpkg sv Swedish
+%lang_subpkg th Thai
 %lang_subpkg tr Turkish
 %lang_subpkg uk Ukrainian
 %lang_subpkg zh_CN "Chinese (S)"
@@ -191,6 +193,10 @@ appstream-util validate-relax --nonet %{buildroot}/%{_metainfodir}/org.%{name}.S
 %doc doc
 
 %changelog
+* Thu Nov 07 2019 Martin Gansser <martinkg@fedoraproject.org> - 19.10.20-1
+- Update to 19.10.20
+- Add Galician and Thai translation file
+
 * Tue Sep 17 2019 Martin Gansser <martinkg@fedoraproject.org> - 19.09.14-2
 - Add missing translations for ko, nn and sv
 
