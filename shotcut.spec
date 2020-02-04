@@ -3,9 +3,9 @@
 %define _vstring %(echo %{version} |tr -d ".")
 
 Name:           shotcut
-Version:        19.12.31
-Release:        1%{dist}
-#Release:        0.1.beta1%%{dist}
+Version:        20.02.02
+#Release:        1%%{dist}
+Release:        0.1.beta1%{dist}
 Summary:        A free, open source, cross-platform video editor
 # The entire source code is GPLv3+ except mvcp/ which is LGPLv2+
 License:        GPLv3+ and LGPLv2+
@@ -82,6 +82,7 @@ Supplements:    (%{name} = %{version}-%{release} and langpacks-%{1})\
 %files          langpack-%{1}\
 %{_datadir}/%{name}/translations/%{name}_%{1}*.qm
 
+%lang_subpkg ar Arabic
 %lang_subpkg ca Catalan
 %lang_subpkg cs Czech
 %lang_subpkg da Danish
@@ -120,21 +121,11 @@ Supplements:    (%{name} = %{version}-%{release} and langpacks-%{1})\
 %prep
 %autosetup -p0
 
-# Create version.json from current version
-echo "{" > version.json
-echo " \"version_number\": %{_vstring}02," >> version.json
-echo " \"version_string\": \"%{version}.02\"," >> version.json
-echo " \"url\": \"https://shotcut.org/blog/new-release-%{_vstring}/\"" >> version.json
-echo "}" >> version.json
-echo "" >> version.json
-
 # Postmortem debugging tools for MinGW.
 rm -rf drmingw
 
 %build
-export _VSTRING="%{version}.02"
-%{qmake_qt5} _VSTRING="%{version}.02" \
-             PREFIX=%{buildroot}%{_prefix}
+%{qmake_qt5} PREFIX=%{buildroot}%{_prefix}
 %make_build
 
 # update Doxyfile
@@ -165,7 +156,7 @@ pushd $basedir
                 echo "%lang($lang) $langdir/$qm" >>"$langlist"
         done
 popd
-cp -v version.json %{buildroot}%{_datadir}/%{name}
+#cp -v version.json %{buildroot}%{_datadir}/%{name}
 
 # fixes E: script-without-shebang
 chmod a-x %{buildroot}%{_datadir}/%{name}/qml/filters/webvfx_ruttetraizer/ruttetraizer.html
@@ -193,6 +184,9 @@ appstream-util validate-relax --nonet %{buildroot}/%{_metainfodir}/org.%{name}.S
 %doc doc
 
 %changelog
+* Tue Feb 04 2020 Martin Gansser <martinkg@fedoraproject.org> - 20.02.02-0.1.beta1
+- Update to 20.02.02-0.1.beta1
+
 * Wed Jan 01 2020 Martin Gansser <martinkg@fedoraproject.org> - 19.12.31-1
 - Update to 19.12.31
 
