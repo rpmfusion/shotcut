@@ -3,7 +3,7 @@
 %define _vstring %(echo %{version} |tr -d ".")
 
 Name:           shotcut
-Version:        20.02.17
+Version:        20.04.12
 Release:        1%{dist}
 #Release:        0.1.beta1%%{dist}
 Summary:        A free, open source, cross-platform video editor
@@ -47,7 +47,7 @@ Requires:       qt5-qtmultimedia
 Requires:       gstreamer1-plugins-bad-free-extras
 Requires:       frei0r-plugins
 Requires:       ladspa
-Requires:       mlt-freeworld >= 6.10.0
+Requires:       mlt-freeworld >= 6.20.0
 Requires:       lame
 Requires:       ffmpeg
 
@@ -184,6 +184,9 @@ appstream-util validate-relax --nonet %{buildroot}/%{_metainfodir}/org.%{name}.S
 %doc doc
 
 %changelog
+* Tue Apr 14 2020 Martin Gansser <martinkg@fedoraproject.org> - 20.04.12-1
+- Update to 20.04.12
+
 * Tue Feb 18 2020 Martin Gansser <martinkg@fedoraproject.org> - 20.02.17-1
 - Update to 20.02.17
 
