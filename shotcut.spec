@@ -3,7 +3,7 @@
 %define _vstring %(echo %{version} |tr -d ".")
 
 Name:           shotcut
-Version:        20.04.12
+Version:        20.06.28
 Release:        1%{dist}
 #Release:        0.1.beta1%%{dist}
 Summary:        A free, open source, cross-platform video editor
@@ -173,7 +173,7 @@ appstream-util validate-relax --nonet %{buildroot}/%{_metainfodir}/org.%{name}.S
 %{_datadir}/%{name}/
 %exclude %{_datadir}/%{name}/translations
 %{_datadir}/applications/org.%{name}.Shotcut.desktop
-%{_datadir}/icons/hicolor/64x64/apps/org.%{name}.Shotcut.png
+%{_datadir}/icons/hicolor/*/apps/org.%{name}.Shotcut.png
 %{_metainfodir}/org.%{name}.Shotcut.appdata.xml
 %{_datadir}/mime/packages/org.%{name}.Shotcut.xml
 %{_mandir}/man1/%{name}.1.*
@@ -184,6 +184,9 @@ appstream-util validate-relax --nonet %{buildroot}/%{_metainfodir}/org.%{name}.S
 %doc doc
 
 %changelog
+* Mon Jun 29 2020 Martin Gansser <martinkg@fedoraproject.org> - 20.06.28-1
+- Update to 20.06.28
+
 * Tue Apr 14 2020 Martin Gansser <martinkg@fedoraproject.org> - 20.04.12-1
 - Update to 20.04.12
 
