@@ -39,6 +39,10 @@ BuildRequires:  pkgconfig(mlt++) >= 6.20.0
 BuildRequires:  pkgconfig(mlt-framework) >= 6.20.0
 BuildRequires:  x264-devel
 BuildRequires:  webvfx-devel
+%if 0%{?fedora} >= 33
+BuildRequires:  gstreamer1-devel
+BuildRequires:  gstreamer1-plugins-base-devel
+%endif
 
 # mlt-freeworld is compellingly necessary otherwise shotcut coredumps
 Requires:       qt5-qtquickcontrols
