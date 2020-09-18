@@ -1,9 +1,9 @@
---- src/mainwindow.cpp.orig	2019-04-23 15:28:14.999850370 +0200
-+++ src/mainwindow.cpp	2019-04-23 15:29:38.767713374 +0200
-@@ -2922,9 +2922,9 @@
-         m_network.get(request);
+--- src/mainwindow.cpp.orig	2020-09-18 10:39:00.943983974 +0200
++++ src/mainwindow.cpp	2020-09-18 10:42:54.653011748 +0200
+@@ -3302,9 +3302,9 @@
+         showStatusMessage("Checking for upgrade...");
+         m_network.get(QNetworkRequest(QUrl("https://check.shotcut.org/version.json")));
      } else {
-         m_network.setStrictTransportSecurityEnabled(false);
 -        QAction* action = new QAction(tr("Click here to check for a new version of Shotcut."), 0);
 -        connect(action, SIGNAL(triggered(bool)), SLOT(on_actionUpgrade_triggered()));
 -        showStatusMessage(action, 15 /* seconds */);
@@ -13,12 +13,12 @@
      }
  }
  
-@@ -3375,7 +3375,7 @@
+@@ -3937,7 +3937,7 @@
                      m_upgradeUrl = json.object().value("url").toString();
                  showStatusMessage(action, 15 /* seconds */);
              } else {
 -                showStatusMessage(tr("You are running the latest version of Shotcut."));
-+		 showStatusMessage(tr("Use dnf for updates."));
++                showStatusMessage(tr("Use dnf for updates."));
              }
              reply->deleteLater();
              return;
