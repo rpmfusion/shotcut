@@ -35,8 +35,8 @@ BuildRequires:  pkgconfig(Qt5WebSockets)
 BuildRequires:  pkgconfig(Qt5X11Extras)
 BuildRequires:  pkgconfig(Qt5Xml)
 BuildRequires:  qt5-linguist
-BuildRequires:  pkgconfig(mlt++) >= 6.20.0
-BuildRequires:  pkgconfig(mlt-framework) >= 6.20.0
+BuildRequires:  pkgconfig(mlt++) >= 6.22.1
+BuildRequires:  pkgconfig(mlt-framework) >= 6.22.1
 BuildRequires:  x264-devel
 BuildRequires:  webvfx-devel
 
