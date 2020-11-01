@@ -4,7 +4,7 @@
 
 Name:           shotcut
 Version:        20.09.27
-Release:        1%{dist}
+Release:        2%{dist}
 #Release:        0.1.beta1%%{dist}
 Summary:        A free, open source, cross-platform video editor
 # The entire source code is GPLv3+ except mvcp/ which is LGPLv2+
@@ -17,6 +17,8 @@ Source1:        %{name}.appdata.xml
 Patch0:         mlt_path.patch
 # shotcut-noupdatecheck.patch -- Disable automatic update check
 Patch1:         shotcut-noupdatecheck.patch
+# Force X
+Patch2:         Force_X.patch
 
 BuildRequires:  gcc-c++
 BuildRequires:  desktop-file-utils
@@ -184,6 +186,9 @@ appstream-util validate-relax --nonet %{buildroot}/%{_metainfodir}/org.%{name}.S
 %doc doc
 
 %changelog
+* Sun Nov  1 2020 Leigh Scott <leigh123linux@gmail.com> - 20.09.27-2
+- Force X (rfbz#5822)
+
 * Mon Sep 28 2020 Martin Gansser <martinkg@fedoraproject.org> - 20.09.27-1
 - Update to 20.09.27
 
