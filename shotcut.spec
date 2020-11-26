@@ -33,6 +33,7 @@ BuildRequires:  pkgconfig(Qt5OpenGL)
 BuildRequires:  pkgconfig(Qt5PrintSupport)
 BuildRequires:  pkgconfig(Qt5Quick)
 BuildRequires:  pkgconfig(Qt5WebKitWidgets)
+BuildRequires:  pkgconfig(Qt5QuickControls2)
 BuildRequires:  pkgconfig(Qt5WebSockets)
 BuildRequires:  pkgconfig(Qt5X11Extras)
 BuildRequires:  pkgconfig(Qt5Xml)
@@ -188,6 +189,7 @@ appstream-util validate-relax --nonet %{buildroot}/%{_metainfodir}/org.%{name}.S
 %changelog
 * Thu Nov 26 2020 Martin Gansser <martinkg@fedoraproject.org> - 20.11.25-1
 - Update to 20.11.25
+- Add BR pkgconfig(Qt5QuickControls2)
 
 * Mon Nov 02 2020 Martin Gansser <martinkg@fedoraproject.org> - 20.10.31-1
 - Update to 20.10.31
