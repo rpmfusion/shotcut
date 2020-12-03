@@ -1,5 +1,5 @@
---- src/jobs/meltjob.cpp.orig	2020-11-02 15:30:43.463144678 +0100
-+++ src/jobs/meltjob.cpp	2020-11-02 15:30:59.196142990 +0100
+--- src/jobs/meltjob.cpp.orig	2020-11-30 16:40:41.045006301 +0100
++++ src/jobs/meltjob.cpp	2020-11-30 16:44:27.679336104 +0100
 @@ -95,7 +95,7 @@
          return;
      }
