@@ -4,7 +4,7 @@
 
 Name:           shotcut
 Version:        20.11.28
-Release:        1%{dist}
+Release:        2%{dist}
 #Release:        0.1.beta1%%{dist}
 Summary:        A free, open source, cross-platform video editor
 # The entire source code is GPLv3+ except mvcp/ which is LGPLv2+
@@ -19,6 +19,7 @@ Patch0:         mlt_path.patch
 Patch1:         shotcut-noupdatecheck.patch
 # Force X
 Patch2:         Force_X.patch
+Patch3:         shotcut-numeric_limits.patch
 
 BuildRequires:  gcc-c++
 BuildRequires:  desktop-file-utils
@@ -187,6 +188,9 @@ appstream-util validate-relax --nonet %{buildroot}/%{_metainfodir}/org.%{name}.S
 %doc doc
 
 %changelog
+* Fri Jan 15 2021 Martin Gansser <martinkg@fedoraproject.org> - 20.11.28-2
+- Add shotcut-numeric_limits.patch
+
 * Mon Nov 30 2020 Martin Gansser <martinkg@fedoraproject.org> - 20.11.28-1
 - Update to 20.11.28
 
