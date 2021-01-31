@@ -3,8 +3,8 @@
 %define _vstring %(echo %{version} |tr -d ".")
 
 Name:           shotcut
-Version:        20.11.28
-Release:        2%{dist}
+Version:        21.01.29
+Release:        1%{dist}
 #Release:        0.1.beta1%%{dist}
 Summary:        A free, open source, cross-platform video editor
 # The entire source code is GPLv3+ except mvcp/ which is LGPLv2+
@@ -19,7 +19,6 @@ Patch0:         mlt_path.patch
 Patch1:         shotcut-noupdatecheck.patch
 # Force X
 Patch2:         Force_X.patch
-Patch3:         shotcut-numeric_limits.patch
 
 BuildRequires:  gcc-c++
 BuildRequires:  desktop-file-utils
@@ -162,13 +161,9 @@ pushd $basedir
 popd
 #cp -v version.json %{buildroot}%{_datadir}/%{name}
 
-# fixes E: script-without-shebang
-chmod a-x %{buildroot}%{_datadir}/%{name}/qml/filters/webvfx_ruttetraizer/ruttetraizer.html
-chmod a-x %{buildroot}%{_datadir}/%{name}/qml/filters/webvfx_ruttetraizer/three.js
-
 %check
 desktop-file-validate %{buildroot}%{_datadir}/applications/org.%{name}.Shotcut.desktop
-appstream-util validate-relax --nonet %{buildroot}/%{_metainfodir}/org.%{name}.Shotcut.appdata.xml
+appstream-util validate-relax --nonet %{buildroot}/%{_metainfodir}/org.%{name}.Shotcut.metainfo.xml
 
 %files
 %doc README.md
@@ -178,7 +173,7 @@ appstream-util validate-relax --nonet %{buildroot}/%{_metainfodir}/org.%{name}.S
 %exclude %{_datadir}/%{name}/translations
 %{_datadir}/applications/org.%{name}.Shotcut.desktop
 %{_datadir}/icons/hicolor/*/apps/org.%{name}.Shotcut.png
-%{_metainfodir}/org.%{name}.Shotcut.appdata.xml
+%{_metainfodir}/org.%{name}.Shotcut.metainfo.xml
 %{_datadir}/mime/packages/org.%{name}.Shotcut.xml
 %{_mandir}/man1/%{name}.1.*
 
@@ -188,6 +183,9 @@ appstream-util validate-relax --nonet %{buildroot}/%{_metainfodir}/org.%{name}.S
 %doc doc
 
 %changelog
+* Sun Jan 31 2021 Martin Gansser <martinkg@fedoraproject.org> - 21.01.29-1
+- Update to 21.01.29
+
 * Fri Jan 15 2021 Martin Gansser <martinkg@fedoraproject.org> - 20.11.28-2
 - Add shotcut-numeric_limits.patch
 
