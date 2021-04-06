@@ -4,7 +4,7 @@
 
 Name:           shotcut
 Version:        21.03.21
-Release:        1%{dist}
+Release:        2%{dist}
 #Release:        0.1.beta1%%{dist}
 Summary:        A free, open source, cross-platform video editor
 # The entire source code is GPLv3+ except mvcp/ which is LGPLv2+
@@ -53,6 +53,9 @@ Requires:       ladspa
 Requires:       mlt-freeworld >= 6.20.0
 Requires:       lame
 Requires:       ffmpeg
+
+# audio filters
+Suggests:       ladspa-swh-plugins
 
 %description
 Shotcut is a free and open-source cross-platform video editing application for
@@ -183,6 +186,9 @@ appstream-util validate-relax --nonet %{buildroot}/%{_metainfodir}/org.%{name}.S
 %doc doc
 
 %changelog
+* Tue Apr 06 2021 Martin Gansser <martinkg@fedoraproject.org> - 21.03.21-2
+- Add suggested audio filters ladspa-swh-plugins fix (RBZ#5965)
+
 * Mon Mar 22 2021 Martin Gansser <martinkg@fedoraproject.org> - 21.03.21-1
 - Update to 21.03.21
 
