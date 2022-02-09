@@ -3,8 +3,8 @@
 %define _vstring %(echo %{version} |tr -d ".")
 
 Name:           shotcut
-Version:        21.03.21
-Release:        3%{dist}
+Version:        22.01.30
+Release:        1%{dist}
 #Release:        0.1.beta1%%{dist}
 Summary:        A free, open source, cross-platform video editor
 # The entire source code is GPLv3+ except mvcp/ which is LGPLv2+
@@ -14,9 +14,9 @@ Source0:        https://github.com/mltframework/shotcut/archive/v%{version}.tar.
 # https://forum.shotcut.org/t/appdata-xml-file-for-gnome-software-center/2742
 Source1:        %{name}.appdata.xml
 # Melt patch /usr/bin/mlt-melt
-Patch0:         mlt_path.patch
+##Patch0:         mlt_path.patch
 # shotcut-noupdatecheck.patch -- Disable automatic update check
-Patch1:         shotcut-noupdatecheck.patch
+##Patch1:         shotcut-noupdatecheck.patch
 # Force X
 Patch2:         Force_X.patch
 
@@ -38,8 +38,8 @@ BuildRequires:  pkgconfig(Qt5WebSockets)
 BuildRequires:  pkgconfig(Qt5X11Extras)
 BuildRequires:  pkgconfig(Qt5Xml)
 BuildRequires:  qt5-linguist
-BuildRequires:  pkgconfig(mlt++) >= 6.22.1
-BuildRequires:  pkgconfig(mlt-framework) >= 6.22.1
+BuildRequires:  pkgconfig(mlt++-7) >= 7.0.0
+BuildRequires:  pkgconfig(mlt-framework-7) >= 7.0.0
 BuildRequires:  x264-devel
 BuildRequires:  webvfx-devel
 
@@ -50,7 +50,7 @@ Requires:       qt5-qtmultimedia
 Requires:       gstreamer1-plugins-bad-free-extras
 Requires:       frei0r-plugins
 Requires:       ladspa
-Requires:       mlt-freeworld >= 6.20.0
+Requires:       mlt-freeworld >= 7.0.0
 Requires:       lame
 Requires:       ffmpeg
 
@@ -114,6 +114,7 @@ Supplements:    (%{name} = %{version}-%{release} and langpacks-%{1})\
 %lang_subpkg pl Polish
 %lang_subpkg pt_BR "Portuguese (Brazil)"
 %lang_subpkg pt_PT "Portuguese (Portugal)"
+%lang_subpkg ro Romanian
 %lang_subpkg ru Russian
 %lang_subpkg sk Slovakian
 %lang_subpkg sl Slovenian
@@ -131,7 +132,9 @@ Supplements:    (%{name} = %{version}-%{release} and langpacks-%{1})\
 rm -rf drmingw
 
 %build
-%{qmake_qt5} PREFIX=%{buildroot}%{_prefix}
+%{qmake_qt5} PREFIX=%{buildroot}%{_prefix} \
+             SHOTCUT_VERSION=%{version}    \
+             DEFINES+=SHOTCUT_NOUPGRADE
 %make_build
 
 # update Doxyfile
@@ -186,6 +189,9 @@ appstream-util validate-relax --nonet %{buildroot}/%{_metainfodir}/org.%{name}.S
 %doc doc
 
 %changelog
+* Wed Feb 09 2022 Martin Gansser <martinkg@fedoraproject.org> - 22.01.30-1
+- Update to 22.01.30
+
 * Tue Aug 03 2021 RPM Fusion Release Engineering <leigh123linux@gmail.com> - 21.03.21-3
 - Rebuilt for https://fedoraproject.org/wiki/Fedora_35_Mass_Rebuild
 
