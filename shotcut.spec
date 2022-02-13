@@ -38,8 +38,8 @@ BuildRequires:  pkgconfig(Qt5WebSockets)
 BuildRequires:  pkgconfig(Qt5X11Extras)
 BuildRequires:  pkgconfig(Qt5Xml)
 BuildRequires:  qt5-linguist
-BuildRequires:  pkgconfig(mlt++-7) >= 7.0.0
-BuildRequires:  pkgconfig(mlt-framework-7) >= 7.0.0
+BuildRequires:  pkgconfig(mlt++-7) >= 7.4.0
+BuildRequires:  pkgconfig(mlt-framework-7) >= 7.4.0
 BuildRequires:  x264-devel
 BuildRequires:  webvfx-devel
 
@@ -50,7 +50,7 @@ Requires:       qt5-qtmultimedia
 Requires:       gstreamer1-plugins-bad-free-extras
 Requires:       frei0r-plugins
 Requires:       ladspa
-Requires:       mlt-freeworld >= 7.0.0
+Requires:       mlt-freeworld >= 7.4.0
 Requires:       lame
 Requires:       ffmpeg
 
