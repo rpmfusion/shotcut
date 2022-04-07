@@ -3,7 +3,7 @@
 %define _vstring %(echo %{version} |tr -d ".")
 
 Name:           shotcut
-Version:        22.01.30
+Version:        22.03.30
 Release:        1%{dist}
 #Release:        0.1.beta1%%{dist}
 Summary:        A free, open source, cross-platform video editor
@@ -38,8 +38,8 @@ BuildRequires:  pkgconfig(Qt5WebSockets)
 BuildRequires:  pkgconfig(Qt5X11Extras)
 BuildRequires:  pkgconfig(Qt5Xml)
 BuildRequires:  qt5-linguist
-BuildRequires:  pkgconfig(mlt++-7) >= 7.4.0
-BuildRequires:  pkgconfig(mlt-framework-7) >= 7.4.0
+BuildRequires:  pkgconfig(mlt++-7) >= 7.6.0
+BuildRequires:  pkgconfig(mlt-framework-7) >= 7.6.0
 BuildRequires:  x264-devel
 BuildRequires:  webvfx-devel
 
@@ -50,7 +50,7 @@ Requires:       qt5-qtmultimedia
 Requires:       gstreamer1-plugins-bad-free-extras
 Requires:       frei0r-plugins
 Requires:       ladspa
-Requires:       mlt-freeworld >= 7.4.0
+Requires:       mlt-freeworld >= 7.6.0
 Requires:       lame
 Requires:       ffmpeg
 
@@ -189,6 +189,9 @@ appstream-util validate-relax --nonet %{buildroot}/%{_metainfodir}/org.%{name}.S
 %doc doc
 
 %changelog
+* Thu Mar 31 2022 Martin Gansser <martinkg@fedoraproject.org> - 22.03.30-1
+- Update to 22.03.30
+
 * Wed Feb 09 2022 Martin Gansser <martinkg@fedoraproject.org> - 22.01.30-1
 - Update to 22.01.30
 
