@@ -1,9 +1,5 @@
-# This package creates a build time version from the current date and uses it to check
-# for updates. See patch1 and prep/build section.
-%define _vstring %(echo %{version} |tr -d ".")
-
 Name:           shotcut
-Version:        22.04.25
+Version:        22.06.07
 Release:        1%{dist}
 #Release:        0.1.beta1%%{dist}
 Summary:        A free, open source, cross-platform video editor
@@ -13,14 +9,12 @@ URL:            http://www.shotcut.org/
 Source0:        https://github.com/mltframework/shotcut/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
 # https://forum.shotcut.org/t/appdata-xml-file-for-gnome-software-center/2742
 Source1:        %{name}.appdata.xml
-# Melt patch /usr/bin/mlt-melt
-##Patch0:         mlt_path.patch
-# shotcut-noupdatecheck.patch -- Disable automatic update check
-##Patch1:         shotcut-noupdatecheck.patch
 # Force X
-Patch2:         Force_X.patch
+Patch1:         Force_X.patch
 
 BuildRequires:  gcc-c++
+BuildRequires:  cmake
+BuildRequires:  ninja-build
 BuildRequires:  desktop-file-utils
 BuildRequires:  doxygen
 BuildRequires:  libappstream-glib
@@ -42,6 +36,7 @@ BuildRequires:  pkgconfig(mlt++-7) >= 7.6.0
 BuildRequires:  pkgconfig(mlt-framework-7) >= 7.6.0
 BuildRequires:  x264-devel
 BuildRequires:  webvfx-devel
+BuildRequires:  fftw-devel
 
 # mlt-freeworld is compellingly necessary otherwise shotcut coredumps
 Requires:       qt5-qtquickcontrols
@@ -131,11 +126,16 @@ Supplements:    (%{name} = %{version}-%{release} and langpacks-%{1})\
 # Postmortem debugging tools for MinGW.
 rm -rf drmingw
 
+# fix libdir path
+sed -i -e 's|DESTINATION lib|DESTINATION ${LIB_INSTALL_DIR}|'g CuteLogger/CMakeLists.txt
+
 %build
-%{qmake_qt5} PREFIX=%{buildroot}%{_prefix} \
-             SHOTCUT_VERSION=%{version}    \
-             DEFINES+=SHOTCUT_NOUPGRADE
-%make_build
+%cmake3 -DCMAKE_INSTALL_PREFIX=%{_prefix} \
+       -DUNIX_STRUCTURE=1 -GNinja \
+       -DCMAKE_BUILD_TYPE=Release \
+       -DSHOTCUT_VERSION=%{version} \
+       -DDEFINES+=SHOTCUT_NOUPGRADE
+%cmake_build
 
 # update Doxyfile
 doxygen -u CuteLogger/Doxyfile
@@ -143,8 +143,9 @@ doxygen -u CuteLogger/Doxyfile
 doxygen CuteLogger/Doxyfile
 
 %install
-%make_install
+%cmake_install
 chmod a+x %{buildroot}/%{_datadir}/shotcut/qml/export-edl/rebuild.sh
+chmod a+x %{buildroot}/%{_datadir}/shotcut/qml/export-chapters/rebuild.sh
 
 # Install language files
 langlist="$PWD/%{name}.lang"
@@ -165,7 +166,6 @@ pushd $basedir
                 echo "%lang($lang) $langdir/$qm" >>"$langlist"
         done
 popd
-#cp -v version.json %{buildroot}%{_datadir}/%{name}
 
 %check
 desktop-file-validate %{buildroot}%{_datadir}/applications/org.%{name}.Shotcut.desktop
@@ -175,6 +175,7 @@ appstream-util validate-relax --nonet %{buildroot}/%{_metainfodir}/org.%{name}.S
 %doc README.md
 %license COPYING
 %{_bindir}/%{name}
+%{_libdir}/libCuteLogger.so
 %{_datadir}/%{name}/
 %exclude %{_datadir}/%{name}/translations
 %{_datadir}/applications/org.%{name}.Shotcut.desktop
@@ -189,6 +190,11 @@ appstream-util validate-relax --nonet %{buildroot}/%{_metainfodir}/org.%{name}.S
 %doc doc
 
 %changelog
+* Thu Jun 23 2022 Martin Gansser <martinkg@fedoraproject.org> - 22.06.07-1
+- Update to 22.06.07
+- Use cmake instead of qmake
+- Fix libdir install path
+
 * Mon May 02 2022 Martin Gansser <martinkg@fedoraproject.org> - 22.04.25-1
 - Update to 22.04.25
 
