@@ -1,6 +1,6 @@
 Name:           shotcut
-Version:        22.06.23
-Release:        2%{dist}
+Version:        22.09.23
+Release:        1%{dist}
 #Release:        0.1.beta1%%{dist}
 Summary:        A free, open source, cross-platform video editor
 # The entire source code is GPLv3+ except mvcp/ which is LGPLv2+
@@ -11,7 +11,6 @@ Source0:        https://github.com/mltframework/shotcut/archive/v%{version}.tar.
 Source1:        %{name}.appdata.xml
 # Force X
 Patch0:         Force_X.patch
-Patch1:         shotcut-libdir.patch
 
 BuildRequires:  gcc-c++
 BuildRequires:  cmake
@@ -188,6 +187,10 @@ appstream-util validate-relax --nonet %{buildroot}/%{_metainfodir}/org.%{name}.S
 %doc doc
 
 %changelog
+* Mon Sep 26 2022 Martin Gansser <martinkg@fedoraproject.org> - 22.09.23-1
+- Update to 22.09.23
+
+* Fri Jun 24 2022 Martin Gansser <martinkg@fedoraproject.org> - 22.06.07-2
 * Sun Aug 07 2022 RPM Fusion Release Engineering <sergiomb@rpmfusion.org> - 22.06.23-2
 - Rebuilt for https://fedoraproject.org/wiki/Fedora_37_Mass_Rebuild and ffmpeg
   5.1
