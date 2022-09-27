@@ -190,7 +190,6 @@ appstream-util validate-relax --nonet %{buildroot}/%{_metainfodir}/org.%{name}.S
 * Mon Sep 26 2022 Martin Gansser <martinkg@fedoraproject.org> - 22.09.23-1
 - Update to 22.09.23
 
-* Fri Jun 24 2022 Martin Gansser <martinkg@fedoraproject.org> - 22.06.07-2
 * Sun Aug 07 2022 RPM Fusion Release Engineering <sergiomb@rpmfusion.org> - 22.06.23-2
 - Rebuilt for https://fedoraproject.org/wiki/Fedora_37_Mass_Rebuild and ffmpeg
   5.1
