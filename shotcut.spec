@@ -1,5 +1,5 @@
 Name:           shotcut
-Version:        22.10.22
+Version:        22.10.25
 Release:        1%{dist}
 #Release:        0.1.beta1%%{dist}
 Summary:        A free, open source, cross-platform video editor
@@ -187,6 +187,9 @@ appstream-util validate-relax --nonet %{buildroot}/%{_metainfodir}/org.%{name}.S
 %doc doc
 
 %changelog
+* Wed Oct 26 2022 Martin Gansser <martinkg@fedoraproject.org> - 22.10.25-1
+- Update to 22.10.25
+
 * Mon Oct 24 2022 Martin Gansser <martinkg@fedoraproject.org> - 22.10.22-1
 - Update to 22.10.22
 
