@@ -39,9 +39,6 @@ BuildRequires:  webvfx-devel
 BuildRequires:  fftw-devel
 
 # mlt-freeworld is compellingly necessary otherwise shotcut coredumps
-Requires:       qt5-qtquickcontrols
-Requires:       qt5-qtgraphicaleffects
-Requires:       qt5-qtmultimedia
 Requires:       gstreamer1-plugins-bad-free-extras
 Requires:       frei0r-plugins
 Requires:       ladspa
