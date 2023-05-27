@@ -1,12 +1,12 @@
 Name:           shotcut
-Version:        22.12.21
+Version:        23.05.14
 Release:        1%{dist}
 #Release:        0.1.beta1%%{dist}
 Summary:        A free, open source, cross-platform video editor
 # The entire source code is GPLv3+ except mvcp/ which is LGPLv2+
 License:        GPLv3+ and LGPLv2+
 URL:            http://www.shotcut.org/
-Source0:        https://github.com/mltframework/shotcut/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
+Source0:        https://github.com/mltframework/shotcut/archive/v%{version}/%{name}-%{version}.tar.gz
 # https://forum.shotcut.org/t/appdata-xml-file-for-gnome-software-center/2742
 Source1:        %{name}.appdata.xml
 # Force X
@@ -18,22 +18,22 @@ BuildRequires:  ninja-build
 BuildRequires:  desktop-file-utils
 BuildRequires:  doxygen
 BuildRequires:  libappstream-glib
-BuildRequires:  pkgconfig(Qt5Concurrent)
-BuildRequires:  pkgconfig(Qt5Core) >= 5.9.1
-BuildRequires:  pkgconfig(Qt5Gui)
-BuildRequires:  pkgconfig(Qt5Multimedia)
-BuildRequires:  pkgconfig(Qt5Network)
-BuildRequires:  pkgconfig(Qt5OpenGL)
-BuildRequires:  pkgconfig(Qt5PrintSupport)
-BuildRequires:  pkgconfig(Qt5Quick)
-BuildRequires:  pkgconfig(Qt5WebKitWidgets)
-BuildRequires:  pkgconfig(Qt5QuickControls2)
-BuildRequires:  pkgconfig(Qt5WebSockets)
-BuildRequires:  pkgconfig(Qt5X11Extras)
-BuildRequires:  pkgconfig(Qt5Xml)
-BuildRequires:  qt5-linguist
+BuildRequires:  pkgconfig(Qt6Concurrent)
+BuildRequires:  pkgconfig(Qt6Core) >= 6.4.0
+BuildRequires:  pkgconfig(Qt6Gui)
+BuildRequires:  pkgconfig(Qt6Multimedia)
+BuildRequires:  pkgconfig(Qt6Network)
+BuildRequires:  pkgconfig(Qt6OpenGL)
+BuildRequires:  pkgconfig(Qt6PrintSupport)
+BuildRequires:  pkgconfig(Qt6Quick)
+BuildRequires:  pkgconfig(Qt6QuickWidgets)
+BuildRequires:  pkgconfig(Qt6QuickControls2)
+BuildRequires:  pkgconfig(Qt6WebSockets)
+BuildRequires:  pkgconfig(Qt6Xml)
+BuildRequires:  pkgconfig(Qt6Linguist)
 BuildRequires:  pkgconfig(mlt++-7) >= 7.6.0
 BuildRequires:  pkgconfig(mlt-framework-7) >= 7.6.0
+BuildRequires:  pkgconfig(xkbcommon)
 BuildRequires:  x264-devel
 BuildRequires:  webvfx-devel
 BuildRequires:  fftw-devel
@@ -151,11 +151,11 @@ basedir=$(basename "$langdir")
 pushd $basedir
         for ts in *.ts; do
                 [ -e "$ts" ] || continue
-                lupdate-qt5 "$ts" && lrelease-qt5 "$ts"
+                lupdate-qt6 "$ts" && lrelease-qt6 "$ts"
         done
         for qm in *.qm; do
                 [ -e "$qm" ] || continue
-                if ! grep -wqs "%dir\ $langdir" "$langlist"; then
+                if ! grep -wqs "%dir $langdir" "$langlist"; then
                         echo "%dir $langdir" >>"$langlist"
                 fi
                 install -Dm0644 "$qm" "%{buildroot}/$langdir/$qm"
@@ -187,6 +187,9 @@ appstream-util validate-relax --nonet %{buildroot}/%{_metainfodir}/org.%{name}.S
 %doc doc
 
 %changelog
+* Sat May 27 2023 Leigh Scott <leigh123linux@gmail.com> - 23.05.14-1
+- Update to 23.05.14
+
 * Thu Dec 22 2022 Martin Gansser <martinkg@fedoraproject.org> - 22.12.21-1
 - Update to 22.12.21
 
