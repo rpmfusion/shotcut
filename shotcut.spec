@@ -7,8 +7,6 @@ Summary:        A free, open source, cross-platform video editor
 License:        GPL-3.0-or-later AND LGPL-2.1-or-later
 URL:            http://www.shotcut.org/
 Source0:        https://github.com/mltframework/shotcut/archive/v%{version}/%{name}-%{version}.tar.gz
-# https://forum.shotcut.org/t/appdata-xml-file-for-gnome-software-center/2742
-Source1:        %{name}.appdata.xml
 # Force X
 Patch0:         Force_X.patch
 
