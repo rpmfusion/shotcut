@@ -1,10 +1,10 @@
 Name:           shotcut
 Version:        23.05.14
-Release:        1%{dist}
+Release:        2%{dist}
 #Release:        0.1.beta1%%{dist}
 Summary:        A free, open source, cross-platform video editor
 # The entire source code is GPLv3+ except mvcp/ which is LGPLv2+
-License:        GPLv3+ and LGPLv2+
+License:        GPL-3.0-or-later AND LGPL-2.1-or-later
 URL:            http://www.shotcut.org/
 Source0:        https://github.com/mltframework/shotcut/archive/v%{version}/%{name}-%{version}.tar.gz
 # https://forum.shotcut.org/t/appdata-xml-file-for-gnome-software-center/2742
@@ -184,6 +184,9 @@ appstream-util validate-relax --nonet %{buildroot}/%{_metainfodir}/org.%{name}.S
 %doc doc
 
 %changelog
+* Sat May 27 2023 Leigh Scott <leigh123linux@gmail.com> - 23.05.14-2
+- remove the manually added qt5 requires
+
 * Sat May 27 2023 Leigh Scott <leigh123linux@gmail.com> - 23.05.14-1
 - Update to 23.05.14
 
