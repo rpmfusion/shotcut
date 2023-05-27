@@ -1,6 +1,6 @@
 Name:           shotcut
 Version:        23.05.14
-Release:        2%{dist}
+Release:        3%{dist}
 #Release:        0.1.beta1%%{dist}
 Summary:        A free, open source, cross-platform video editor
 # The entire source code is GPLv3+ except mvcp/ which is LGPLv2+
@@ -39,6 +39,7 @@ BuildRequires:  fftw-devel
 # mlt-freeworld is compellingly necessary otherwise shotcut coredumps
 Requires:       gstreamer1-plugins-bad-free-extras
 Requires:       frei0r-plugins
+Requires:       qt6-qt5compat
 Requires:       ladspa
 Requires:       mlt-freeworld >= 7.6.0
 Requires:       lame
@@ -182,8 +183,11 @@ appstream-util validate-relax --nonet %{buildroot}/%{_metainfodir}/org.%{name}.S
 %doc doc
 
 %changelog
+* Sat May 27 2023 Leigh Scott <leigh123linux@gmail.com> - 23.05.14-3
+- Add requires qt6-qt5compat
+
 * Sat May 27 2023 Leigh Scott <leigh123linux@gmail.com> - 23.05.14-2
-- remove the manually added qt5 requires
+- Remove the manually added qt5 requires
 
 * Sat May 27 2023 Leigh Scott <leigh123linux@gmail.com> - 23.05.14-1
 - Update to 23.05.14
