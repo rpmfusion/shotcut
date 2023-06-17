@@ -1,7 +1,6 @@
 Name:           shotcut
-Version:        23.05.14
-Release:        3%{dist}
-#Release:        0.1.beta1%%{dist}
+Version:        23.06.14
+Release:        1%{dist}
 Summary:        A free, open source, cross-platform video editor
 # The entire source code is GPLv3+ except mvcp/ which is LGPLv2+
 License:        GPL-3.0-or-later AND LGPL-2.1-or-later
@@ -183,6 +182,9 @@ appstream-util validate-relax --nonet %{buildroot}/%{_metainfodir}/org.%{name}.S
 %doc doc
 
 %changelog
+* Sat Jun 17 2023 Leigh Scott <leigh123linux@gmail.com> - 23.06.14-1
+- Update to 23.06.14
+
 * Sat May 27 2023 Leigh Scott <leigh123linux@gmail.com> - 23.05.14-3
 - Add requires qt6-qt5compat
 
