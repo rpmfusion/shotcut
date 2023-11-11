@@ -1,5 +1,5 @@
 Name:           shotcut
-Version:        23.09.29
+Version:        23.11.04
 Release:        1%{dist}
 Summary:        A free, open source, cross-platform video editor
 # The entire source code is GPLv3+ except mvcp/ which is LGPLv2+
@@ -17,6 +17,7 @@ BuildRequires:  doxygen
 BuildRequires:  libappstream-glib
 BuildRequires:  pkgconfig(Qt6Concurrent)
 BuildRequires:  pkgconfig(Qt6Core) >= 6.4.0
+BuildRequires:  pkgconfig(Qt6Charts)
 BuildRequires:  pkgconfig(Qt6Gui)
 BuildRequires:  pkgconfig(Qt6Multimedia)
 BuildRequires:  pkgconfig(Qt6Network)
@@ -92,6 +93,7 @@ Supplements:    (%{name} = %{version}-%{release} and langpacks-%{1})\
 %lang_subpkg fr French
 %lang_subpkg gd "(Scottish Gaelic)"
 %lang_subpkg gl Galician
+%lang_subpkg he_IL Hebrew
 %lang_subpkg hu Hungarian
 %lang_subpkg it Italian
 %lang_subpkg ja Japanese
@@ -182,6 +184,11 @@ appstream-util validate-relax --nonet %{buildroot}/%{_metainfodir}/org.%{name}.S
 %doc doc
 
 %changelog
+* Sat Nov 11 2023 Martin Gansser <martinkg@fedoraproject.org> - 23.11.04-1
+- Update to 23.11.04
+- Add BR pkgconfig(Qt6Charts)
+- Add Hebrew language
+
 * Thu Oct 05 2023 Martin Gansser <martinkg@fedoraproject.org> - 23.97.29-1
 - Update to 23.09.29
 
