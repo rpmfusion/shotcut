@@ -1,6 +1,6 @@
 Name:           shotcut
 Version:        23.11.04
-Release:        1%{dist}
+Release:        1%{dist}.1
 Summary:        A free, open source, cross-platform video editor
 # The entire source code is GPLv3+ except mvcp/ which is LGPLv2+
 License:        GPL-3.0-or-later AND LGPL-2.1-or-later
@@ -184,6 +184,9 @@ appstream-util validate-relax --nonet %{buildroot}/%{_metainfodir}/org.%{name}.S
 %doc doc
 
 %changelog
+* Sun Nov 19 2023 Sérgio Basto <sergio@serjux.com> - 23.11.04-1.1
+- Rebuilt for Qt_6.6_PRIVATE_API on Fedora 38 only
+
 * Sat Nov 11 2023 Martin Gansser <martinkg@fedoraproject.org> - 23.11.04-1
 - Update to 23.11.04
 - Add BR pkgconfig(Qt6Charts)
