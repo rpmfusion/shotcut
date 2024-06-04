@@ -29,8 +29,8 @@ BuildRequires:  pkgconfig(Qt6QuickControls2)
 BuildRequires:  pkgconfig(Qt6WebSockets)
 BuildRequires:  pkgconfig(Qt6Xml)
 BuildRequires:  pkgconfig(Qt6Linguist)
-BuildRequires:  pkgconfig(mlt++-7) >= 7.6.0
-BuildRequires:  pkgconfig(mlt-framework-7) >= 7.6.0
+BuildRequires:  pkgconfig(mlt++-7) >= 7.22.0
+BuildRequires:  pkgconfig(mlt-framework-7) >= 7.22.0
 BuildRequires:  pkgconfig(xkbcommon)
 BuildRequires:  x264-devel
 BuildRequires:  webvfx-devel
@@ -41,7 +41,7 @@ Requires:       gstreamer1-plugins-bad-free-extras
 Requires:       frei0r-plugins
 Requires:       qt6-qt5compat
 Requires:       ladspa
-Requires:       mlt-freeworld >= 7.6.0
+Requires:       mlt-freeworld >= 7.22.0
 Requires:       lame
 Requires:       ffmpeg
 
