@@ -1,5 +1,5 @@
 Name:           shotcut
-Version:        24.04.28
+Version:        24.06.02
 Release:        1%{?dist}
 Summary:        A free, open source, cross-platform video editor
 # The entire source code is GPLv3+ except mvcp/ which is LGPLv2+
@@ -184,6 +184,9 @@ appstream-util validate-relax --nonet %{buildroot}/%{_metainfodir}/org.%{name}.S
 %doc doc
 
 %changelog
+* Tue Jun 04 2024 Martin Gansser <martinkg@fedoraproject.org> - 24.06.02-1
+- Update to 24.06.02
+
 * Wed May 01 2024 Leigh Scott <leigh123linux@gmail.com> - 24.04.28-1
 - Update to 24.04.28
 
